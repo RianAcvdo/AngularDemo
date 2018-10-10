@@ -1,0 +1,71 @@
+<h3 style="color:brown">
+  {{titulo}}
+</h3>
+<strong>Empleado:</strong>
+<br><br>
+<div *ngIf="trabajador_externo==true">
+  <button class="btn btn-info" (click)="cambiarTipoEmpleado(false)">Mostrar trabajador</button>
+  <br>
+  <ul>
+    <li>{{trabajadores[0].nombre}}</li>
+    <li>{{trabajadores[0].edad}}</li>
+    <li>{{trabajadores[0].cargo}}</li>
+    <li *ngIf="trabajadores[0].contratado==true">contratado</li>
+    <li *ngIf="trabajadores[0].contratado==false">no contratado</li>
+  </ul>
+</div>
+<div *ngIf="trabajador_externo==false">
+  <!--(click) para invocar una funcio en la etiqueta html: (click)=<nombre_de_la_funcion> -->
+  <button class="btn btn-info" (click)="cambiarTipoEmpleado(true)">Mostrar empleado</button>
+  <ul>
+    <li>{{empleado.nombre}}</li>
+    <li>{{empleado.edad}}</li>
+    <li>{{empleado.cargo}}</li>
+    <!--*ngIf para definir una condicion en la etiqueta html-->
+    <li *ngIf="empleado.contratado==true">contratado</li>
+    <li *ngIf="empleado.contratado==false">no contratado</li>
+  </ul>
+</div>
+<hr>
+<strong>Lista trabajadores</strong>
+<div>
+  <ul>
+    <!--*ngFor para iterar empleado en trabajadores-->
+    <li *ngFor="let empleado of trabajadores; let i = index">
+      Empleado <strong>{{i+1}}</strong>
+      <ul>
+        <li>{{empleado.nombre}}</li>
+        <li>{{empleado.edad}}</li>
+        <li>{{empleado.cargo}}</li>
+        <!--*ngIf para definir una condicion en la etiqueta html-->
+        <li *ngIf="empleado.contratado==true" style="color:green">contratado</li>
+        <li *ngIf="empleado.contratado==false" style="color:red">no contratado</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<hr>
+<h3>Colores</h3>
+<ul [ngSwitch]="color">
+  <li *ngSwitchCase="'red'" [ngStyle]="{'background':color,'color':'white','padding': '20px'}">
+    <p>Color rojo</p>
+  </li>
+  <li *ngSwitchCase="'green'" [ngStyle]="{'background':color,'color':'white','padding': '20px'}">
+    <p>Color verde</p>
+  </li>
+  <li *ngSwitchCase="'blue'" [ngStyle]="{'background':color,'color':'white','padding': '20px'}">
+    <p>Color azul</p>
+  </li>
+</ul>
+<hr>
+<h3>Selector de Colores</h3>
+<input type="text" [(ngModel)]="selectedcolor">
+<pre [style.border]="selectedcolor == 'red' ? '5px solid black' : '1px solid green'" [class.borderAzul]="selectedcolor=='blue'">
+        <strong [ngClass]="{
+          letraGrande: selectedcolor == 'red'
+        }">Color elegido</strong>
+        {{selectedcolor}}
+      </pre>
+<div [ngStyle]="{'background': selectedcolor,'width':'200px','height':'200px','float':'right','margin-right':'69%'}">
+  <div style="clear:both"></div>
+</div>

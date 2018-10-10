@@ -1,0 +1,8 @@
+<p *ngIf='params'>
+  contact works! {{params}}
+  <button class="btn btn-info" (click)='redirigirHome()'>Go to Home</button>
+</p>
+
+<p *ngIf='!params'>
+  <button class="btn btn-info" (click)='redirigir()'>Go to Page</button>
+</p>

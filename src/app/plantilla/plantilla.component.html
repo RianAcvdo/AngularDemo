@@ -1,0 +1,32 @@
+<p>
+  {{titulo}}
+</p>
+
+<div *ngIf="administrador; then admin else noAdmin">
+
+</div>
+
+<ng-template #admin>
+  <button class="btn btn-danger" (click)="cambioUsuario(false)">No Ser Administrador</button>
+  <br>
+  <strong>
+    Eres Administrador
+  </strong>
+</ng-template>
+
+<ng-template #noAdmin>
+  <button class="btn btn-primary" (click)="cambioUsuario(true)">Ser Administrador</button>
+  <br>
+  <strong>
+    No Eres Administrador
+  </strong>
+</ng-template>
+
+<hr>
+<componente-hijo [texto1]="dato_externo" [texto2]="identity.web" (propiedad_uno_hijo)="datoRecivido($event)"></componente-hijo>
+<hr>
+<div *ngIf="datos_component_hijo">
+  <h1>{{datos_component_hijo.nombre}}</h1>
+  <h1>{{datos_component_hijo.web}}</h1>
+  <h1>{{datos_component_hijo.tematica}}</h1>
+</div>

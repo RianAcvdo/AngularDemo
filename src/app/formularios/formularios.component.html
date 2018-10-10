@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col">
+    <p>
+      Componetes para coches
+    </p>
+  </div>
+  <div class="col">
+    <h3>Lista de Coches</h3>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col">
+    <form #formCoche="ngForm" (ngSubmit)="onSubmit(); formCoche.reset()">
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="car" name="nombre" #nombre="ngModel"
+          [(ngModel)]="car.nombre" required>
+        <span *ngIf="nombre.touched && !nombre.valid" [ngStyle]="{'color':'red'}">
+          Dato invalido
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Caballaje" name="caballaje"
+          #caballaje="ngModel" [(ngModel)]="car.caballaje" required pattern="[0-9]+">
+        <span *ngIf="caballaje.touched &&  !caballaje.valid" [ngStyle]="{'color':'red'}">
+          Dato invalido
+        </span>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Color" name="color" #color="ngModel"
+          [(ngModel)]="car.color" required pattern="[a-zA-Z#]+">
+        <span *ngIf="color.touched && !color.valid" [ngStyle]="{'color':'red'}">
+          Dato invalido
+        </span>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Guardar" [disabled]="!formCoche.form.valid">
+    </form>
+  </div>
+
+  <div class="col">
+
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">code</th>
+          <th scope="col">Coche</th>
+          <th scope="col">Caballaje</th>
+          <th scope="col">Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{car.nombre}}</td>
+          <td>{{car.caballaje}}</td>
+          <td>{{car.color}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

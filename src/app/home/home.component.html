@@ -1,0 +1,28 @@
+<p>
+  home works!
+</p>
+<hr>
+<!--el "|" en este caso nos deja establecer un filtro para despues darle un formato a la fecha y 
+   (hacer tranformaciones de fecha)-->
+{{fecha| date: 'dd/MM/yyyy'}} 
+<!--transformas caracteres usando pipes-->
+{{fecha| date: 'fullDate' | uppercase}} 
+<hr>
+<!--SINTAXIS: {{PARAM1 | conversor PARAM2}}-->
+Pipe Customizada: {{5 | conversor: 5}}
+<hr>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Ingrese Prenda" aria-label="Prenda" aria-describedby="button-addon2"
+    [(ngModel)]="ropaGuardar">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="add()">Añadir</button>
+  </div>
+</div>
+<span *ngIf="ropaGuardar">Ropa a guardar: <strong>{{ropaGuardar}}</strong></span>
+<h3>Lista de ropa</h3>
+<ul>
+  <li *ngFor="let prenda of listaRopa; let i = index">
+    {{prenda}}
+    <button class="btn btn-danger" (click)="delete(i)">Eliminar</button>
+  </li>
+</ul>
