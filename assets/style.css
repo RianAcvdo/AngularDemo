@@ -1,0 +1,13 @@
+.borderAzul{
+    border: 15px solid lightblue !important;
+}
+
+.letraGrande{
+    font-size: 40px;
+    color: red;
+}
+
+.activeLink{
+    font-weight: bold;
+    background: yellowgreen;
+}
